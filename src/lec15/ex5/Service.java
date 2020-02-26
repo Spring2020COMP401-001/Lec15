@@ -1,4 +1,4 @@
-package lec13.ex5;
+package lec15.ex5;
 
 public abstract class Service {
 	

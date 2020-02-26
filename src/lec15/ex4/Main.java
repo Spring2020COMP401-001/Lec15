@@ -1,4 +1,4 @@
-package lec13.ex4;
+package lec15.ex4;
 
 public class Main {
 

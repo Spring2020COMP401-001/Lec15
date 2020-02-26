@@ -1,4 +1,4 @@
-package lec13.ex3;
+package lec15.ex4;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -27,11 +27,6 @@ public class Student {
 		return PID;
 	}
 	
-	@Override
-	public String toString() {
-		return super.toString() + " (" + last_name + ", " + first_name + ")";
-	}
-	
 	// Below are things we need to create a multiton
 	
 	// all_students is the static structure where we will store existing
@@ -49,13 +44,28 @@ public class Student {
 			return new_student;
 		}
 	}
-		
-	// lookupStudent() is factory method variant that does not create
-	// new Student object if not already existing. Returns null if
-	// student does not exist.
 	
-	public static Student lookupStudent(int PID) {
-		// Map returns null if key not defined so matches what we want to do.
-		return all_students.get(PID);
+	@Override
+	public String toString() {
+		return super.toString() + " (" + last_name + ", " + first_name + ")";
+	}
+	
+	// lookupStudent() is factory method variant that does not create
+	// new Student object if not already existing. 
+	// Generates a custom exception if student does not already exist.
+	
+	public static Student lookupStudent(int PID) throws NoSuchStudentException {
+		
+		Student s = all_students.get(PID);		
+		if (s == null) {
+			throw new NoSuchStudentException(PID);
+		}
+		return s;
+	}
+}
+
+class NoSuchStudentException extends Exception {
+	public NoSuchStudentException(int PID) {
+		super("No such student: " + PID);
 	}
 }

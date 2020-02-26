@@ -1,4 +1,4 @@
-package lec13.ex2;
+package lec15.ex1;
 
 public class ClassB {
 
